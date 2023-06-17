@@ -6,3 +6,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+expect-dialog = "1.0.1"
+kcp = "0.5.3"
+native-dialog = "0.6.4"
+openxr = "0.17.1"
+gtk = "0.17.1"
+relm = "0.24.1"
+relm-derive = "0.24.0"
