@@ -6,14 +6,9 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-bevy_ecs = "0.11.0"
+bevy = "0.12.0"
+bevy_openxr = { git = "https://github.com/awtterpip/bevy_openxr.git" }
 expect-dialog = "1.0.1"
 globals = "1.0.5"
 gltf = "1.2.0"
-kcp = "0.5.3"
-native-dialog = "0.6.4"
-openxr = "0.17.1"
-relm = "0.24.1"
-relm-derive = "0.24.0"
-sdl2 = "0.35.2"
-wgpu = "0.17.0"
+native-dialog = "0.7.0"
