@@ -23,10 +23,10 @@ fn main() {
     // color_eyre::install().unwrap();
 
     info!("Running `openxr-6dof` skill");
-    App::new()
+    let mut app = App::new();
+        app.add_plugins(LogDiagnosticsPlugin::default())
         .add_plugins(DefaultXrPlugins)
         //.add_plugins(OpenXrDebugRenderer) //new debug renderer adds gizmos to
-        .add_plugins(LogDiagnosticsPlugin::default())
         .add_plugins(FrameTimeDiagnosticsPlugin)
         .add_systems(Startup, setup)
         .add_systems(Update, proto_locomotion)
@@ -47,8 +47,9 @@ fn main() {
         .add_systems(Update, prototype_interaction_input)
         .add_systems(Update, update_interactable_states)
         .add_systems(Update, update_grabbables.after(update_interactable_states))
-        .add_event::<InteractionEvent>()
-        .run();
+        .add_event::<InteractionEvent>();
+        
+    app.run();
 }
 
 /// set up a simple 3D scene
