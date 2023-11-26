@@ -1,5 +1,5 @@
 use bevy::ecs::component::Component;
-use wasmer::{imports, Instance, Module, Store};
+use wasmer::{Imports, Instance, Module, Store};
 
 pub mod api;
 pub mod system;
@@ -12,12 +12,10 @@ pub struct WasmScript {
 }
 
 impl WasmScript {
-    pub fn new(data: &[u8]) -> WasmScript {
-        let mut store = Store::default();
+    pub fn new(data: &[u8], mut store: Store, imports: &Imports) -> WasmScript {
         let module = Module::new(&store, data).unwrap();
 
-        let import_object = imports! {};
-        let instance = Instance::new(&mut store, &module, &import_object).unwrap();
+        let instance = Instance::new(&mut store, &module, imports).unwrap();
 
         WasmScript {
             module,
